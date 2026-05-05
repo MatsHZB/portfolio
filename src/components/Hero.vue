@@ -1,0 +1,214 @@
+<template>
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-tags" aria-label="Focus">
+        <span>Frontend</span>
+        <span>Vue</span>
+        <span>Spring Boot</span>
+      </div>
+      <h1>Mats Hazebroek</h1>
+      <h2>
+        <span>Tweedejaars HBO ICT Student</span>
+        <span class="hero-subtitle-sep" aria-hidden="true">/</span>
+        <span>Richting Software Development</span>
+      </h2>
+      <p class="tagline">
+        Ik bouw full stack webapplicaties op school, op werk en in eigen projecten. Elke plek met
+        zijn eigen stack.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projecten" class="btn btn-primary">Bekijk projecten</a>
+        <a href="#contact" class="btn btn-secondary">Contact</a>
+      </div>
+      <p class="hero-meta" aria-label="Kernpunten">
+        <span class="hero-meta-item">2e jaar HBO ICT (Software Development)</span>
+        <span class="hero-meta-sep" aria-hidden="true">/</span>
+        <span class="hero-meta-item">Full stack basis</span>
+        <span class="hero-meta-sep" aria-hidden="true">/</span>
+        <span class="hero-meta-item">Scrum</span>
+        <span class="hero-meta-sep" aria-hidden="true">/</span>
+        <span class="hero-meta-item">UX focus</span>
+      </p>
+      <a href="#about" class="scroll-hint" aria-label="Scroll naar volgende sectie">
+        Scroll voor meer
+        <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </section>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'Hero',
+})
+</script>
+
+<style scoped>
+.hero {
+  min-height: calc(78vh - 4.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-muted) 100%);
+  padding: clamp(2.5rem, 6vw, 4rem) 0;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.hero-tags span {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.hero h2 {
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  font-weight: 500;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.hero-subtitle-sep {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.tagline {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: var(--color-text-muted);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.hero-meta {
+  margin: 0 auto 1.4rem;
+  max-width: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem 1rem;
+}
+
+.hero-meta-item {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.hero-meta-sep {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.scroll-hint:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.scroll-hint-arrow {
+  display: inline-block;
+  animation: hint-bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes hint-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint-arrow {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 2.25rem;
+  }
+
+  .hero h2 {
+    font-size: 1.25rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-meta {
+    gap: 0.4rem 0.7rem;
+  }
+
+  .hero-meta-item {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-meta-sep {
+    font-size: 0.95rem;
+  }
+}
+</style>

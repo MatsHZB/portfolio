@@ -1,0 +1,255 @@
+<template>
+  <div class="project-card" :class="{ 'is-flipped': flipped }">
+    <div class="project-card-inner">
+      <div class="project-card-face project-card-front" :inert="flipped">
+        <div
+          class="project-image"
+          :class="{ 'project-image-logo': projectItem.imageFit === 'contain' }"
+        >
+          <img :src="projectItem.imageUrl" :alt="projectItem.title" />
+        </div>
+        <div class="project-content">
+          <h3>{{ projectItem.title }}</h3>
+          <div class="tech-badges">
+            <span v-for="technology in projectItem.technologies" :key="technology" class="badge">
+              {{ technology }}
+            </span>
+          </div>
+          <p>{{ projectItem.description }}</p>
+          <div class="project-links">
+            <button
+              v-if="projectItem.details"
+              type="button"
+              class="link link-button"
+              :aria-expanded="flipped"
+              @click="flip"
+            >
+              Meer info →
+            </button>
+            <a v-if="projectItem.githubUrl" :href="projectItem.githubUrl" class="link">
+              GitHub →
+            </a>
+            <a v-if="projectItem.demoUrl" :href="projectItem.demoUrl" class="link">
+              Live Demo →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card-face project-card-back" :inert="!flipped">
+        <h3>{{ projectItem.title }}</h3>
+        <p class="project-details">{{ projectItem.details }}</p>
+        <div class="project-links project-back-actions">
+          <button type="button" class="link link-button" @click="flip">← Terug</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+import type { ProjectItem } from '@/interfaces/projectItem'
+
+export default defineComponent({
+  name: 'ProjectCard',
+  props: {
+    projectItem: {
+      type: Object as PropType<ProjectItem>,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      flipped: false,
+    }
+  },
+  methods: {
+    flip() {
+      this.flipped = !this.flipped
+    },
+  },
+})
+</script>
+
+<style scoped>
+.project-card {
+  position: relative;
+  height: 100%;
+  perspective: 1200px;
+}
+
+.project-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.project-card.is-flipped .project-card-inner {
+  transform: rotateY(180deg);
+}
+
+.project-card-face {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.project-card-front {
+  height: 100%;
+}
+
+.project-card-back {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+  transform: rotateY(180deg);
+}
+
+.project-card:hover .project-card-inner:not(.is-flipped) {
+  transform: translateY(-4px);
+}
+
+.project-card.is-flipped:hover .project-card-inner {
+  transform: rotateY(180deg) translateY(-4px);
+}
+
+.project-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-image-logo {
+  background: #000;
+}
+
+.project-image-logo img {
+  background-color: #000;
+  object-fit: contain;
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.project-content {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-content h3 {
+  margin-bottom: 0.6rem;
+  color: var(--color-text);
+  font-size: 1.2rem;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.badge {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  padding: 0.28rem 0.6rem;
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.link {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.link:hover {
+  color: var(--color-accent-hover);
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.project-card-back h3 {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-size: 1.2rem;
+}
+
+.project-details {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+  margin: 0 0 1rem;
+  overflow: auto;
+}
+
+.project-back-actions {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card-inner {
+    transition: none;
+  }
+
+  .project-card:hover .project-card-inner:not(.is-flipped),
+  .project-card.is-flipped:hover .project-card-inner {
+    transform: none;
+  }
+
+  .project-card.is-flipped:hover .project-card-inner,
+  .project-card.is-flipped .project-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-content {
+    padding: 1rem;
+  }
+
+  .project-links {
+    gap: 0.75rem;
+  }
+
+  .project-card-back {
+    padding: 1.2rem;
+  }
+}
+</style>
