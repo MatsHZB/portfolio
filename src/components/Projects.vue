@@ -1,7 +1,7 @@
 <template>
   <section id="projecten" class="projects section-padding">
     <div class="container">
-      <h2 class="section-title">Projecten</h2>
+      <h2 class="section-title section-title-lead">Projecten</h2>
       <p class="section-subtitle">Mijn beste werk</p>
       <div class="projects-grid">
         <ScrollReveal
@@ -39,17 +39,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.section-title {
-  text-align: center;
-  margin-bottom: 0.5rem;
-  color: var(--color-text);
-}
-
-.section-subtitle {
-  text-align: center;
-  color: var(--color-text-muted);
-  opacity: 0.7;
-  margin-bottom: 3rem;
+.projects {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .projects-grid {

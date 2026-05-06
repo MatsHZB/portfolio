@@ -67,12 +67,7 @@ export default defineComponent({
 <style scoped>
 .about {
   background: var(--color-bg-muted);
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--color-text);
+  border-top: 1px solid var(--color-border);
 }
 
 .about-grid {

@@ -1,8 +1,8 @@
 <template>
   <section id="contact" class="contact section-padding">
     <div class="container contact-content">
-      <h2 class="section-title">Contact</h2>
-      <p class="contact-cta">Laten we connecten!</p>
+      <h2 class="section-title section-title-lead">Contact</h2>
+      <p class="section-subtitle">Laten we connecten!</p>
       <div class="social-links">
         <a
           v-for="link in contactLinks"
@@ -35,21 +35,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.contact {
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-}
-
-.section-title {
-  margin-bottom: 1rem;
-  color: var(--color-text);
-}
-
-.contact-cta {
-  color: var(--color-text-muted);
-  opacity: 0.8;
-  margin-bottom: 2rem;
 }
 
 .social-links {

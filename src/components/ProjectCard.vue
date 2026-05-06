@@ -6,7 +6,15 @@
           class="project-image"
           :class="{ 'project-image-logo': projectItem.imageFit === 'contain' }"
         >
-          <img :src="projectItem.imageUrl" :alt="projectItem.title" />
+          <img
+            :src="projectItem.imageUrl"
+            :srcset="projectItem.imageSrcset"
+            :alt="projectItem.title"
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="project-content">
           <h3>{{ projectItem.title }}</h3>
@@ -29,9 +37,7 @@
             <a v-if="projectItem.githubUrl" :href="projectItem.githubUrl" class="link">
               GitHub →
             </a>
-            <a v-if="projectItem.demoUrl" :href="projectItem.demoUrl" class="link">
-              Live Demo →
-            </a>
+            <a v-if="projectItem.demoUrl" :href="projectItem.demoUrl" class="link"> Live Demo → </a>
           </div>
         </div>
       </div>

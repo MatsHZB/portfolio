@@ -47,13 +47,13 @@ export default defineComponent({
 
 <style scoped>
 .hero {
-  min-height: calc(78vh - 4.5rem);
+  min-height: calc(58vh - 5rem);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-muted) 100%);
-  padding: clamp(2.5rem, 6vw, 4rem) 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
 }
 
 .hero-content {
@@ -65,7 +65,7 @@ export default defineComponent({
   justify-content: center;
   gap: 0.6rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .hero-tags span {
@@ -78,16 +78,15 @@ export default defineComponent({
 }
 
 .hero h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--color-text);
 }
 
 .hero h2 {
   font-size: clamp(1.1rem, 2.6vw, 1.5rem);
   font-weight: 500;
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
-  color: var(--color-text);
+  margin-bottom: 1.1rem;
+  color: var(--color-text-muted);
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -101,7 +100,7 @@ export default defineComponent({
 
 .tagline {
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.35rem;
   color: var(--color-text-muted);
 }
 
@@ -110,11 +109,11 @@ export default defineComponent({
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 1.35rem;
 }
 
 .hero-meta {
-  margin: 0 auto 1.4rem;
+  margin: 0 auto 1rem;
   max-width: 720px;
   display: flex;
   flex-wrap: wrap;
@@ -181,7 +180,8 @@ export default defineComponent({
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding-top: 2.25rem;
+    padding-top: 1.75rem;
+    padding-bottom: clamp(1.5rem, 4vw, 2rem);
   }
 
   .hero h2 {

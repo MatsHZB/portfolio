@@ -3,14 +3,16 @@
     <div class="container nav-content">
       <div class="logo">
         <span class="logo-full">Mats Hazebroek</span>
-        <span class="logo-short" aria-hidden="true">Mats H.</span>
+        <span class="logo-short">Mats H.</span>
       </div>
-      <ul class="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#projecten">Projecten</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-menu-scroll">
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projecten">Projecten</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 </template>
@@ -98,7 +100,7 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 580px) {
   .logo-full {
     display: none;
   }

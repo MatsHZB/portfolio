@@ -41,13 +41,8 @@ export default defineComponent({
 
 <style scoped>
 .skills {
-  background: var(--color-bg-muted);
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--color-text);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
 }
 
 .skills-grid {
