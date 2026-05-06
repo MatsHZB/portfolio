@@ -19,10 +19,11 @@
             <div class="about-portrait-frame">
               <img
                 class="about-portrait-img"
-                src="/images/mats-portrait.png"
+                src="/images/mats-portrait.webp"
+                srcset="/images/mats-portrait.webp 1x, /images/mats-portrait@2x.webp 2x"
                 alt="Mats Hazebroek"
-                width="480"
-                height="640"
+                width="380"
+                height="570"
                 loading="lazy"
                 decoding="async"
               />

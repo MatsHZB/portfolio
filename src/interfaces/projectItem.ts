@@ -5,6 +5,7 @@ export interface ProjectItem {
   description: string
   details?: string
   imageUrl: string
+  imageSrcset?: string
   imageFit?: 'cover' | 'contain'
   githubUrl: string | null
   demoUrl: string | null
