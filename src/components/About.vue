@@ -33,17 +33,17 @@
         <ScrollReveal :delay="100">
           <div class="about-text">
             <p>
-              Ik zit in mijn tweede jaar HBO ICT, richting Software Development. In mijn huidige
-              schoolproject werk ik in een Scrum-team aan een webapplicatie met Lit en plain CSS aan
-              de frontend en Java met Spring Boot aan de backend. Per sprint pak ik op wat het
-              project op dat moment nodig heeft (frontend, backend of allebei).
+              Ik leer het snelst waar theorie naast echte code staat. In mijn huidige schoolproject
+              werk ik in een Scrum-team aan een webapplicatie met Lit en plain CSS aan de frontend
+              en Java met Spring Boot aan de backend. Per sprint pak ik op wat het project op dat
+              moment nodig heeft.
             </p>
             <p>
-              Naast school werk ik als Junior Software Developer bij Terraindex BV met Vue 3 en
-              TypeScript, waar ik leer wat het is om in een echte codebase te werken: code reviews,
-              pull requests en code die anderen straks moeten onderhouden. Daarnaast bouw ik aan
-              eigen projecten zoals Dots Development om te experimenteren met technologieën die ik
-              niet tegenkom op school en om werk te bieden wat anderen kunnen gebruiken.
+              Bij Terraindex BV werk ik als Junior Software Developer met Vue 3 en TypeScript, waar
+              ik leer wat het is om in een echte codebase te werken: code reviews, pull requests en
+              code die anderen straks moeten onderhouden. Daarnaast bouw ik aan eigen projecten
+              zoals Dots Development om te experimenteren met technologieën die ik niet tegenkom op
+              school en om waardevolle software te bouwen voor anderen.
             </p>
           </div>
         </ScrollReveal>

@@ -1,27 +1,22 @@
 <template>
   <section id="home" class="hero">
     <div class="container hero-content">
-      <div class="hero-tags" aria-label="Focus">
-        <span>Frontend</span>
-        <span>Vue</span>
-        <span>Spring Boot</span>
-      </div>
       <h1>Mats Hazebroek</h1>
       <h2>
-        <span>Tweedejaars HBO ICT Student</span>
+        <span>Junior Software Developer bij Terraindex</span>
         <span class="hero-subtitle-sep" aria-hidden="true">/</span>
-        <span>Richting Software Development</span>
+        <span>Tweedejaars HBO ICT · Software Development</span>
       </h2>
       <p class="tagline">
-        Ik bouw full stack webapplicaties op school, op werk en in eigen projecten. Elke plek met
-        zijn eigen stack.
+        Ik bouw full stack webapps op werk met Vue en TypeScript, in het teamproject op school met
+        Lit en Spring Boot en in eigen tijd met wat ik wil uitproberen.
       </p>
       <div class="hero-buttons">
         <a href="#projecten" class="btn btn-primary">Bekijk projecten</a>
         <a href="#contact" class="btn btn-secondary">Contact</a>
       </div>
       <p class="hero-meta" aria-label="Kernpunten">
-        <span class="hero-meta-item">2e jaar HBO ICT (Software Development)</span>
+        <span class="hero-meta-item">Terraindex</span>
         <span class="hero-meta-sep" aria-hidden="true">/</span>
         <span class="hero-meta-item">Full stack basis</span>
         <span class="hero-meta-sep" aria-hidden="true">/</span>
@@ -58,23 +53,6 @@ export default defineComponent({
 
 .hero-content {
   max-width: 800px;
-}
-
-.hero-tags {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.hero-tags span {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  font-size: 0.82rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
 }
 
 .hero h1 {
