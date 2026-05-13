@@ -98,6 +98,12 @@ body {
   margin-bottom: 0.4rem;
 }
 
+.section-title-center {
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+}
+
 .section-subtitle {
   text-align: left;
   max-width: none;

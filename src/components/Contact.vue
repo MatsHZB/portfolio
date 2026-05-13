@@ -1,11 +1,8 @@
 <template>
   <section id="contact" class="contact section-padding">
     <div class="container contact-content">
-      <h2 class="section-title section-title-lead">Contact</h2>
-      <p class="contact-tagline">
-        Heb je een vraag,<br />
-        idee of wil je samenwerken?
-      </p>
+      <h2 class="section-title section-title-center section-title-lead">Contact</h2>
+      <p class="contact-tagline">Heb je een vraag, idee of wil je samenwerken?</p>
       <div class="social-links">
         <a
           v-for="link in contactLinks"
@@ -44,20 +41,22 @@ export default defineComponent({
 }
 
 .contact-content {
-  max-width: none;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .contact-tagline {
-  font-size: clamp(1.6rem, 4.5vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin: 0 0 3rem;
+  font-size: clamp(0.94rem, 1.25vw, 1.06rem);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin: 0 0 2.5rem;
+  line-height: 1.55;
 }
 
 .social-links {
   display: flex;
+  justify-content: center;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
@@ -96,13 +95,9 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
-  .contact-tagline {
-    font-size: clamp(1.4rem, 8vw, 2rem);
-  }
-
   .social-links {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .social-link {
