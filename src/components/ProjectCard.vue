@@ -102,9 +102,11 @@ export default defineComponent({
   flex-direction: column;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0;
   overflow: hidden;
   backface-visibility: hidden;
+  transition: border-left-color 0.2s;
 }
 
 .project-card-front {
@@ -114,7 +116,7 @@ export default defineComponent({
 .project-card-back {
   position: absolute;
   inset: 0;
-  padding: 1.5rem;
+  padding: 1.75rem;
   transform: rotateY(180deg);
 }
 
@@ -136,6 +138,11 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.03);
 }
 
 .project-image-logo {
@@ -148,40 +155,47 @@ export default defineComponent({
   padding: clamp(1rem, 4vw, 2rem);
 }
 
+.project-image-logo:hover img {
+  transform: none;
+}
+
 .project-content {
-  padding: 1.2rem;
+  padding: 1.4rem;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .project-content h3 {
-  margin-bottom: 0.6rem;
+  margin: 0 0 0.6rem;
   color: var(--color-text);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
 }
 
 .tech-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.75rem 0;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0.9rem;
 }
 
 .badge {
   background: var(--color-accent-soft);
   color: var(--color-accent);
-  padding: 0.28rem 0.6rem;
-  border-radius: 0.375rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .project-content p {
-  font-size: 0.95rem;
-  opacity: 0.8;
+  font-size: 0.9rem;
+  line-height: 1.65;
   color: var(--color-text-muted);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1rem;
 }
 
 .project-links {
@@ -194,8 +208,9 @@ export default defineComponent({
 .link {
   color: var(--color-accent);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
 }
 
 .link:hover {
@@ -211,15 +226,16 @@ export default defineComponent({
 }
 
 .project-card-back h3 {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
   color: var(--color-text);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
 }
 
 .project-details {
   color: var(--color-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
   flex: 1;
   margin: 0 0 1rem;
   overflow: auto;
@@ -243,19 +259,19 @@ export default defineComponent({
   .project-card.is-flipped .project-card-inner {
     transform: rotateY(180deg);
   }
+
+  .project-card:hover .project-image img {
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
   .project-content {
-    padding: 1rem;
-  }
-
-  .project-links {
-    gap: 0.75rem;
+    padding: 1.1rem;
   }
 
   .project-card-back {
-    padding: 1.2rem;
+    padding: 1.4rem;
   }
 }
 </style>

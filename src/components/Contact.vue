@@ -2,7 +2,10 @@
   <section id="contact" class="contact section-padding">
     <div class="container contact-content">
       <h2 class="section-title section-title-lead">Contact</h2>
-      <p class="section-subtitle">Laten we connecten!</p>
+      <p class="contact-tagline">
+        Heb je een vraag,<br />
+        idee of wil je samenwerken?
+      </p>
       <div class="social-links">
         <a
           v-for="link in contactLinks"
@@ -41,27 +44,35 @@ export default defineComponent({
 }
 
 .contact-content {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: none;
+}
+
+.contact-tagline {
+  font-size: clamp(1.6rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0 0 3rem;
 }
 
 .social-links {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
 .social-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.55rem;
+  padding: 0.7rem 1.4rem;
   border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border-radius: 0;
   text-decoration: none;
   color: var(--color-text);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
   transition:
     background-color 0.2s,
     border-color 0.2s,
@@ -69,35 +80,33 @@ export default defineComponent({
 }
 
 .social-link:hover {
-  background: var(--color-surface);
-  border-color: var(--color-accent);
+  background: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-bg);
 }
 
 .icon {
   font-weight: bold;
   color: var(--color-accent);
+  transition: color 0.2s;
 }
 
-@media (max-width: 900px) {
-  .social-links {
-    gap: 0.85rem;
-  }
-
-  .social-link {
-    width: min(100%, 22rem);
-    justify-content: center;
-  }
+.social-link:hover .icon {
+  color: var(--color-bg);
 }
 
 @media (max-width: 768px) {
+  .contact-tagline {
+    font-size: clamp(1.4rem, 8vw, 2rem);
+  }
+
   .social-links {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .social-link {
     width: min(100%, 22rem);
-    max-width: 22rem;
   }
 }
 </style>

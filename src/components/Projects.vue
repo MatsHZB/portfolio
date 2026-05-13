@@ -47,7 +47,7 @@ export default defineComponent({
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .projects-grid > * {
