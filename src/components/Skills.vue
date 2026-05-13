@@ -10,7 +10,12 @@
           class="skill-cell"
         >
           <div class="skill-category">
-            <h3>{{ category.title }}</h3>
+            <div class="skill-category-header">
+              <span class="cat-number" aria-hidden="true">{{
+                String(categoryIndex + 1).padStart(2, '0')
+              }}</span>
+              <h3>{{ category.title }}</h3>
+            </div>
             <ul>
               <li v-for="item in category.items" :key="item">{{ item }}</li>
             </ul>
@@ -48,36 +53,39 @@ export default defineComponent({
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  align-items: stretch;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  gap: clamp(2rem, 5vw, 4rem);
 }
 
 .skill-cell {
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-.skill-cell:not(:last-child) {
-  border-right: 1px solid var(--color-border);
 }
 
 .skill-category {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 2rem clamp(1.25rem, 2.5vw, 2rem);
-  box-sizing: border-box;
+}
+
+.skill-category-header {
+  margin-bottom: 1.5rem;
+}
+
+.cat-number {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.5rem;
 }
 
 .skill-category h3 {
-  margin: 0 0 1.25rem;
-  font-size: 0.78rem;
+  margin: 0;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
@@ -87,30 +95,31 @@ export default defineComponent({
   padding: 0;
   margin: 0;
   flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
 }
 
 .skill-category li {
   color: var(--color-text);
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-@media (max-width: 768px) {
+.skill-category li:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 580px) {
   .skills-grid {
     grid-template-columns: 1fr;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .skill-cell:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .skill-category {
-    padding: 1.5rem 0;
+    gap: 2rem;
   }
 }
 </style>

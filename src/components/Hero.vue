@@ -1,33 +1,35 @@
 <template>
   <section id="home" class="hero">
-    <div class="container hero-content">
-      <h1>Mats Hazebroek</h1>
-      <h2>
-        <span>Junior Software Developer bij Terraindex</span>
-        <span class="hero-subtitle-sep" aria-hidden="true">/</span>
-        <span>Tweedejaars HBO ICT · Software Development</span>
-      </h2>
-      <p class="tagline">
-        Ik bouw full stack webapps op werk met Vue en TypeScript, in het teamproject op school met
-        Lit en Spring Boot en in eigen tijd met wat ik wil uitproberen.
-      </p>
-      <div class="hero-buttons">
-        <a href="#projecten" class="btn btn-primary">Bekijk projecten</a>
-        <a href="#contact" class="btn btn-secondary">Contact</a>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">
+          <span>Junior Software Developer</span>
+          <span class="hero-eyebrow-sep" aria-hidden="true">—</span>
+          <span>Terraindex · HBO ICT</span>
+        </p>
+        <h1>Mats<br />Hazebroek</h1>
+        <p class="tagline">
+          Ik bouw full stack webapps op werk met Vue en TypeScript, in het teamproject op school met
+          Lit en Spring Boot en in eigen tijd met wat ik wil uitproberen.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projecten" class="btn btn-primary">Bekijk projecten</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
+        </div>
+        <div class="hero-meta" aria-label="Kernpunten">
+          <span class="hero-meta-item">Terraindex</span>
+          <span class="hero-meta-sep" aria-hidden="true">/</span>
+          <span class="hero-meta-item">Full stack basis</span>
+          <span class="hero-meta-sep" aria-hidden="true">/</span>
+          <span class="hero-meta-item">Scrum</span>
+          <span class="hero-meta-sep" aria-hidden="true">/</span>
+          <span class="hero-meta-item">UX focus</span>
+        </div>
+        <a href="#about" class="scroll-hint" aria-label="Scroll naar volgende sectie">
+          Scroll voor meer
+          <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
-      <p class="hero-meta" aria-label="Kernpunten">
-        <span class="hero-meta-item">Terraindex</span>
-        <span class="hero-meta-sep" aria-hidden="true">/</span>
-        <span class="hero-meta-item">Full stack basis</span>
-        <span class="hero-meta-sep" aria-hidden="true">/</span>
-        <span class="hero-meta-item">Scrum</span>
-        <span class="hero-meta-sep" aria-hidden="true">/</span>
-        <span class="hero-meta-item">UX focus</span>
-      </p>
-      <a href="#about" class="scroll-hint" aria-label="Scroll naar volgende sectie">
-        Scroll voor meer
-        <span class="scroll-hint-arrow" aria-hidden="true">↓</span>
-      </a>
     </div>
   </section>
 </template>
@@ -42,68 +44,74 @@ export default defineComponent({
 
 <style scoped>
 .hero {
-  min-height: calc(58vh - 5rem);
+  min-height: calc(90vh - 5rem);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-muted) 100%);
-  padding: clamp(1.75rem, 4vw, 2.75rem) 0;
+  background: var(--color-bg);
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 680px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0 0 1.75rem;
+}
+
+.hero-eyebrow-sep {
+  color: var(--color-border);
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .hero h1 {
-  margin-bottom: 0.75rem;
+  font-size: clamp(3.2rem, 9vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.75rem;
   color: var(--color-text);
 }
 
-.hero h2 {
-  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
-  font-weight: 500;
-  margin-bottom: 1.1rem;
-  color: var(--color-text-muted);
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5em;
-}
-
-.hero-subtitle-sep {
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
 .tagline {
-  max-width: 600px;
-  margin: 0 auto 1.35rem;
+  max-width: 520px;
+  margin: 0 0 2.25rem;
   color: var(--color-text-muted);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  line-height: 1.75;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-bottom: 1.35rem;
+  margin-bottom: 2.75rem;
 }
 
 .hero-meta {
-  margin: 0 auto 1rem;
-  max-width: 720px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 0.55rem 1rem;
+  gap: 0.45rem 0.75rem;
+  margin: 0 0 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
 .hero-meta-item {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text);
 }
@@ -111,7 +119,7 @@ export default defineComponent({
 .hero-meta-sep {
   color: var(--color-accent);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1;
   user-select: none;
 }
@@ -119,10 +127,12 @@ export default defineComponent({
 .scroll-hint {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   color: var(--color-text-muted);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   border-bottom: 1px solid transparent;
   transition:
     color 0.2s,
@@ -158,35 +168,21 @@ export default defineComponent({
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding-top: 1.75rem;
-    padding-bottom: clamp(1.5rem, 4vw, 2rem);
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
   }
 
-  .hero h2 {
-    font-size: 1.25rem;
+  .hero h1 {
+    font-size: clamp(2.6rem, 11vw, 3.5rem);
   }
 
   .hero-buttons {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .btn {
-    width: 100%;
     max-width: 300px;
-  }
-
-  .hero-meta {
-    gap: 0.4rem 0.7rem;
-  }
-
-  .hero-meta-item {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-  }
-
-  .hero-meta-sep {
-    font-size: 0.95rem;
   }
 }
 </style>

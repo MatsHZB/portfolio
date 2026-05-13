@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container footer-content">
-      <p class="copyright">@ {{ year }} Mats Hazebroek</p>
+      <p class="copyright">© {{ year }} Mats Hazebroek</p>
       <div class="footer-links">
         <a
           v-for="link in contactLinks"
@@ -34,8 +34,8 @@ export default defineComponent({
 
 <style scoped>
 .footer {
-  padding: 3rem 0;
-  border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
+  border-top: 3px solid var(--color-accent);
   background: var(--color-bg-muted);
 }
 
@@ -43,36 +43,46 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .copyright {
-  font-size: 0.875rem;
-  opacity: 0.6;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
+  margin: 0;
 }
 
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.75rem;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .footer-links a {
-  font-size: 0.875rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
   text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
 }
 
 .footer-links a:hover {
   color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .footer-content {
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
-    text-align: center;
   }
 }
 </style>
