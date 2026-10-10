@@ -1,28 +1,30 @@
 import type { ContactLink } from '@/interfaces/contactLink'
 
+export const emailAddress = 'matshazebroek@gmail.com'
+
 export const contactLinks: ContactLink[] = [
   {
     id: 'email',
-    label: 'Email',
-    text: 'matshazebroek@gmail.com',
-    href: 'mailto:matshazebroek@gmail.com',
-    icon: '✉',
-    external: false,
+    name: 'E-mail',
+    href: `mailto:${emailAddress}`,
+    opensInNewTab: false,
   },
   {
     id: 'linkedin',
-    label: 'LinkedIn',
-    text: 'LinkedIn',
+    name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/matshazebroek/',
-    icon: 'in',
-    external: true,
+    opensInNewTab: true,
   },
   {
     id: 'github',
-    label: 'GitHub',
-    text: 'GitHub',
+    name: 'GitHub',
     href: 'https://github.com/MatsHZB',
-    icon: '⌘',
-    external: true,
+    opensInNewTab: true,
   },
 ]
+
+export const socialLinks = contactLinks.filter((link) => link.opensInNewTab)
+
+export function newTabAttributes(link: ContactLink) {
+  return link.opensInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+}

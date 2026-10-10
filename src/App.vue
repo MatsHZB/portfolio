@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <CustomScrollbar />
+    <SectionIndicator />
     <Navigation />
     <main>
       <Hero />
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import CustomScrollbar from '@/components/CustomScrollbar.vue'
+import SectionIndicator from '@/components/SectionIndicator.vue'
 import Navigation from '@/components/Navigation.vue'
 import Hero from '@/components/Hero.vue'
 import About from '@/components/About.vue'
@@ -27,7 +27,7 @@ import SiteFooter from '@/components/SiteFooter.vue'
 export default defineComponent({
   name: 'App',
   components: {
-    CustomScrollbar,
+    SectionIndicator,
     Navigation,
     Hero,
     About,
@@ -39,7 +39,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
   min-height: 100vh;
 }

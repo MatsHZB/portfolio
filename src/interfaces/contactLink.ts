@@ -1,8 +1,6 @@
 export interface ContactLink {
   id: 'email' | 'linkedin' | 'github'
-  label: string
-  text: string
+  name: string
   href: string
-  icon: string
-  external: boolean
+  opensInNewTab: boolean
 }
