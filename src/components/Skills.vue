@@ -1,41 +1,36 @@
 <template>
-  <section id="skills" class="skills section-padding">
-    <div class="container">
-      <h2 class="section-title">Skills & Vaardigheden</h2>
-      <div class="skills-grid">
-        <ScrollReveal
+  <section id="vaardigheden" class="skills section-padding">
+    <div class="container skills-layout">
+      <div class="skills-introduction">
+        <h2 v-reveal class="section-title">Vaardigheden</h2>
+        <p class="skills-introduction-text">
+          Waar ik mee werk: op school, bij Terraindex en in eigen projecten.
+        </p>
+      </div>
+
+      <ul class="skill-categories">
+        <li
           v-for="(category, categoryIndex) in skills"
           :key="category.id"
-          :delay="categoryIndex * 85"
-          class="skill-cell"
+          v-reveal="categoryIndex * 85"
+          class="skill-category"
         >
-          <div class="skill-category">
-            <div class="skill-category-header">
-              <span class="cat-number" aria-hidden="true">{{
-                String(categoryIndex + 1).padStart(2, '0')
-              }}</span>
-              <h3>{{ category.title }}</h3>
-            </div>
-            <ul>
-              <li v-for="item in category.items" :key="item">{{ item }}</li>
-            </ul>
-          </div>
-        </ScrollReveal>
-      </div>
+          <h3>{{ category.title }}</h3>
+          <ul class="skill-list">
+            <li v-for="skill in category.items" :key="skill" class="skill">{{ skill }}</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ScrollReveal from '@/components/ScrollReveal.vue'
 import { skills } from '@/data/skills'
 
 export default defineComponent({
   name: 'Skills',
-  components: {
-    ScrollReveal,
-  },
   data() {
     return {
       skills,
@@ -44,82 +39,65 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .skills {
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-}
-
-.skill-cell {
-  display: flex;
-  flex-direction: column;
-}
-
-.skill-category {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.skill-category-header {
-  margin-bottom: 1.5rem;
-}
-
-.cat-number {
-  display: block;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
-}
-
-.skill-category h3 {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.skill-category ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex: 1 1 auto;
-}
-
-.skill-category li {
-  color: var(--color-text);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.skill-category li:first-child {
-  border-top: 1px solid var(--color-border);
-}
-
-@media (max-width: 900px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+  .skills-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
-}
-
-@media (max-width: 580px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .skills-introduction-text {
+    margin: 0;
+    padding-left: 1.35rem;
+    color: var(--color-text-muted);
+    font-size: clamp(0.94rem, 1.25vw, 1.06rem);
+    line-height: 1.6;
+  }
+  .skill-categories {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .skill-category {
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    border-bottom: 1px solid var(--color-border);
+    h3 {
+      margin: 0 0 0.9rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+  }
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .skill {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: 0.88rem;
+    line-height: 1.3;
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+  .skill:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 }
 </style>

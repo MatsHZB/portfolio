@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#b4532a" />
+  <rect width="32" height="32" rx="6" fill="#a84e2c" />
   <text
     x="16"
     y="16"
-    font-family="ui-monospace, 'Cascadia Code', 'Roboto Mono', Menlo, monospace"
+    font-family="Inter, system-ui, -apple-system, 'Segoe UI', sans-serif"
     font-size="14"
     font-weight="700"
     text-anchor="middle"
     dominant-baseline="central"
-    fill="#f5f0e8"
+    fill="#ffffff"
     letter-spacing="-0.5"
   >MH</text>
 </svg>

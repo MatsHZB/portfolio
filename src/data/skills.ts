@@ -2,18 +2,33 @@ import type { SkillCategory } from '@/interfaces/skillCategory'
 
 export const skills: SkillCategory[] = [
   {
-    id: 'languages',
-    title: 'Languages',
-    items: ['Java', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'SQL'],
+    id: 'talen',
+    title: 'Programmeertalen',
+    items: ['C#', 'Java', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'SQL'],
   },
   {
-    id: 'tools',
-    title: 'Tools & Frameworks',
-    items: ['Spring Boot', 'Vue 3', 'Sass / SCSS', 'Git / GitHub', 'Jest / Vitest', 'MySQL'],
+    id: 'frameworks',
+    title: 'Frameworks en tools',
+    items: [
+      '.NET',
+      'Spring Boot',
+      'Vue 3',
+      'Sass / SCSS',
+      'Git / GitHub',
+      'Jest / Vitest',
+      'MySQL',
+    ],
   },
   {
-    id: 'methods',
+    id: 'methodieken',
     title: 'Methodieken',
-    items: ['Scrum', 'DevOps', 'CI/CD', 'OOP', 'Design Patterns', 'SOLID principes'],
+    items: [
+      'Scrum',
+      'DevOps',
+      'CI/CD',
+      'Objectgeoriënteerd programmeren',
+      'Ontwerppatronen',
+      'SOLID-principes',
+    ],
   },
 ]
