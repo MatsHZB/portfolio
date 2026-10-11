@@ -4,17 +4,19 @@
   box-sizing: border-box;
 }
 :root {
-  --color-bg: #f5f7f8;
-  --color-bg-muted: #eaeef0;
-  --color-surface: #ffffff;
-  --color-text: #16202a;
-  --color-text-muted: #4a5865;
-  --color-accent: #2f6f6a;
-  --color-accent-hover: #245753;
-  --color-accent-soft: rgba(47, 111, 106, 0.12);
-  --color-border: #dce3e7;
-  --color-dot: #cdd6dc;
-  color-scheme: only light;
+  --color-background: #efe9e1;
+  --color-background-muted: #e7dfd4;
+  --color-surface: #f7f3ee;
+  --color-text: #2a211b;
+  --color-text-muted: #6b5d52;
+  --color-accent: #a84e2c;
+  --color-accent-hover: #8f4124;
+  --color-accent-soft: rgba(168, 78, 44, 0.12);
+  --color-on-accent: #ffffff;
+  --color-border: #ddd3c7;
+  --color-dot: #d6cabb;
+  --color-shadow: rgba(42, 33, 27, 0.1);
+  color-scheme: light;
   font-family:
     'Inter Variable',
     Inter,
@@ -25,8 +27,23 @@
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
+}
+:root[data-theme='dark'] {
+  --color-background: #1a1614;
+  --color-background-muted: #201b18;
+  --color-surface: #241f1c;
+  --color-text: #ece4dc;
+  --color-text-muted: #a89a8e;
+  --color-accent: #e08a63;
+  --color-accent-hover: #eaa283;
+  --color-accent-soft: rgba(224, 138, 99, 0.16);
+  --color-on-accent: #2a150b;
+  --color-border: #352e29;
+  --color-dot: #3a322c;
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
 }
 html,
 body {
@@ -34,7 +51,7 @@ body {
   min-height: 100%;
 }
 body {
-  background: var(--color-bg);
+  background: var(--color-background);
 }
 @media (min-width: 901px) {
   html,
@@ -157,7 +174,7 @@ p {
 .button-primary {
   --button-color: var(--color-accent);
   --button-background: var(--color-accent);
-  --button-text-color: white;
+  --button-text-color: var(--color-on-accent);
 }
 .button-primary:hover {
   --button-color: var(--color-accent-hover);
@@ -170,5 +187,5 @@ p {
 }
 .button-secondary:hover {
   --button-background: var(--color-text);
-  --button-text-color: var(--color-bg);
+  --button-text-color: var(--color-background);
 }

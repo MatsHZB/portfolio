@@ -16,7 +16,7 @@
         >
           <span
             class="indicator-fill"
-            :style="{ transform: `scaleY(${fillAmount(sectionIndex)})` }"
+            :style="{ '--fill-amount': fillAmount(sectionIndex) }"
             aria-hidden="true"
           />
         </button>
@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { activeSection, scrollToSection, sections } from '@/lib/activeSection'
+import { activeSection, scrollToSection, sections } from '@/utilities/activeSection'
 
 export default defineComponent({
   name: 'SectionIndicator',
@@ -64,9 +64,13 @@ export default defineComponent({
   border: 1px solid var(--color-border);
   border-radius: 0;
   background: var(--color-surface);
-  box-shadow: 0 6px 20px rgba(22, 32, 42, 0.1);
+  box-shadow: 0 6px 20px var(--color-shadow);
   @media (max-width: 900px) {
-    display: none;
+    top: auto;
+    right: 12px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    transform: none;
+    padding: 6px 9px;
   }
   .indicator-list {
     display: flex;
@@ -76,6 +80,10 @@ export default defineComponent({
     list-style: none;
     margin: 0;
     padding: 0;
+    @media (max-width: 900px) {
+      flex-direction: row;
+      gap: 5px;
+    }
   }
   .indicator-item {
     position: relative;
@@ -90,11 +98,12 @@ export default defineComponent({
     padding: 0;
     border: 1px solid var(--color-text-muted);
     border-radius: 999px;
-    background: var(--color-bg-muted);
+    background: var(--color-background-muted);
     overflow: hidden;
     cursor: pointer;
     transition:
       height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
       border-color 0.2s;
     @media (prefers-reduced-motion: reduce) {
       transition: none;
@@ -104,6 +113,9 @@ export default defineComponent({
     content: '';
     position: absolute;
     inset: -3px -8px;
+    @media (max-width: 900px) {
+      inset: -10px -3px;
+    }
   }
   .indicator-dot:hover {
     border-color: var(--color-accent);
@@ -115,12 +127,21 @@ export default defineComponent({
   .indicator-item.is-active .indicator-dot {
     height: 72px;
     border-color: var(--color-accent);
+    @media (max-width: 900px) {
+      width: 44px;
+      height: 10px;
+    }
   }
   .indicator-fill {
     position: absolute;
     inset: 0;
     background: var(--color-accent);
+    transform: scaleY(var(--fill-amount));
     transform-origin: top;
+    @media (max-width: 900px) {
+      transform: scaleX(var(--fill-amount));
+      transform-origin: left;
+    }
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     @media (prefers-reduced-motion: reduce) {
       transition: none;
@@ -128,6 +149,9 @@ export default defineComponent({
   }
   .indicator-label {
     position: absolute;
+    @media (max-width: 900px) {
+      display: none;
+    }
     right: calc(100% + 18px);
     font-size: 0.8rem;
     font-weight: 500;

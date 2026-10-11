@@ -6,19 +6,19 @@ export const contactLinks: ContactLink[] = [
   {
     id: 'email',
     name: 'E-mail',
-    href: `mailto:${emailAddress}`,
+    url: `mailto:${emailAddress}`,
     opensInNewTab: false,
   },
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/matshazebroek/',
+    url: 'https://www.linkedin.com/in/matshazebroek/',
     opensInNewTab: true,
   },
   {
     id: 'github',
     name: 'GitHub',
-    href: 'https://github.com/MatsHZB',
+    url: 'https://github.com/MatsHZB',
     opensInNewTab: true,
   },
 ]

@@ -1,5 +1,5 @@
 import type { Directive } from 'vue'
-import { gsap, prefersReducedMotion } from '@/lib/motion'
+import { gsap, prefersReducedMotion } from '@/utilities/motion'
 
 type ParallaxProperty = 'y' | 'yPercent'
 

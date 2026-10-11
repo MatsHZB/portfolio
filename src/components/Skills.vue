@@ -87,7 +87,7 @@ export default defineComponent({
   .skill {
     padding: 0.4rem 0.75rem;
     border: 1px solid var(--color-border);
-    background: var(--color-bg);
+    background: var(--color-background);
     color: var(--color-text);
     font-size: 0.88rem;
     line-height: 1.3;

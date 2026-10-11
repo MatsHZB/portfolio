@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { gsap, hasFinePointer, prefersReducedMotion } from '@/lib/motion'
+import { gsap, hasFinePointer, prefersReducedMotion } from '@/utilities/motion'
 
 type MoveTo = (position: number) => void
 

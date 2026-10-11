@@ -11,6 +11,15 @@
     />
     <title>Mats Hazebroek / Junior softwareontwikkelaar | Portfolio</title>
     <link rel="canonical" href="https://matshazebroek.nl/" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('theme')
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme = savedTheme ?? (prefersDark ? 'dark' : 'light')
+      } catch {
+        document.documentElement.dataset.theme = 'light'
+      }
+    </script>
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="nl_NL" />

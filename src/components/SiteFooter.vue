@@ -1,12 +1,12 @@
 <template>
   <footer class="footer">
     <div class="container footer-content">
-      <p class="copyright">© {{ year }} Mats Hazebroek</p>
+      <p class="copyright">© {{ currentYear }} Mats Hazebroek</p>
       <div class="footer-links">
         <a
           v-for="link in contactLinks"
           :key="link.id"
-          :href="link.href"
+          :href="link.url"
           v-bind="newTabAttributes(link)"
           class="footer-link"
         >
@@ -26,7 +26,7 @@ export default defineComponent({
   data() {
     return {
       contactLinks,
-      year: new Date().getFullYear(),
+      currentYear: new Date().getFullYear(),
     }
   },
   methods: {
@@ -39,7 +39,7 @@ export default defineComponent({
 .footer {
   padding: 2rem 0;
   border-top: 3px solid var(--color-accent);
-  background: var(--color-bg-muted);
+  background: var(--color-background-muted);
   .footer-content {
     display: flex;
     justify-content: space-between;

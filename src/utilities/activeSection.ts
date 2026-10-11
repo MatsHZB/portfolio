@@ -1,5 +1,5 @@
 import { reactive, readonly } from 'vue'
-import { smoothScrollTo } from '@/lib/motion'
+import { smoothScrollTo } from '@/utilities/motion'
 
 export const sections = [
   { id: 'home', label: 'Home' },
@@ -34,9 +34,9 @@ function anchorScrollPosition(element: HTMLElement): number {
   return documentTop(element) - (parseFloat(getComputedStyle(element).scrollMarginTop) || 0)
 }
 
-function sectionStartPositions(maxScroll: number): number[] {
+function sectionStartPositions(maximumScroll: number): number[] {
   const viewportHeight = window.innerHeight
-  const activationLineSpeed = 1 + ((1 - activationLineStartRatio) * viewportHeight) / maxScroll
+  const activationLineSpeed = 1 + ((1 - activationLineStartRatio) * viewportHeight) / maximumScroll
   let previousAnchor = 0
 
   return sections.map((section, sectionIndex) => {
@@ -45,18 +45,18 @@ function sectionStartPositions(maxScroll: number): number[] {
 
     const reachedByActivationLine =
       (documentTop(element) - activationLineStartRatio * viewportHeight) / activationLineSpeed
-    const justAfterPreviousAnchor = previousAnchor < maxScroll ? previousAnchor + 1 : 0
+    const justAfterPreviousAnchor = previousAnchor < maximumScroll ? previousAnchor + 1 : 0
     previousAnchor = anchorScrollPosition(element)
 
-    return Math.min(Math.max(reachedByActivationLine, justAfterPreviousAnchor, 0), maxScroll)
+    return Math.min(Math.max(reachedByActivationLine, justAfterPreviousAnchor, 0), maximumScroll)
   })
 }
 
-function respectClickedSection(scrolledIndex: number, maxScroll: number): number {
+function respectClickedSection(scrolledIndex: number, maximumScroll: number): number {
   const clickedElement = document.getElementById(sections[clickedSectionIndex]?.id ?? '')
   if (!clickedElement) return scrolledIndex
 
-  const clickedTarget = Math.min(anchorScrollPosition(clickedElement), maxScroll)
+  const clickedTarget = Math.min(anchorScrollPosition(clickedElement), maximumScroll)
   if (Math.abs(window.scrollY - clickedTarget) <= arrivalTolerance) return clickedSectionIndex
   if (clickedSectionIndex > indexBeforeClick) return Math.min(scrolledIndex, clickedSectionIndex)
   return Math.max(scrolledIndex, clickedSectionIndex)
@@ -65,15 +65,15 @@ function respectClickedSection(scrolledIndex: number, maxScroll: number): number
 function update() {
   isUpdateRequested = false
   const scrollY = window.scrollY
-  const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
-  const starts = sectionStartPositions(maxScroll)
+  const maximumScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
+  const starts = sectionStartPositions(maximumScroll)
   const scrolledIndex = starts.reduce(
     (lastPassed, start, sectionIndex) => (scrollY >= start ? sectionIndex : lastPassed),
     0
   )
-  const activeIndex = respectClickedSection(scrolledIndex, maxScroll)
+  const activeIndex = respectClickedSection(scrolledIndex, maximumScroll)
   const start = starts[activeIndex] ?? 0
-  const end = starts[activeIndex + 1] ?? maxScroll
+  const end = starts[activeIndex + 1] ?? maximumScroll
 
   state.activeIndex = activeIndex
   state.progress = end > start ? Math.min(Math.max((scrollY - start) / (end - start), 0), 1) : 1

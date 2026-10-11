@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { createDotGrid } from '@/lib/dotGrid'
+import { createDotGrid } from '@/utilities/dotGrid'
 
 export default defineComponent({
   name: 'DotGridBackground',

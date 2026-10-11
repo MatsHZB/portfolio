@@ -1,4 +1,4 @@
-import { prefersReducedMotion } from '@/lib/motion'
+import { prefersReducedMotion } from '@/utilities/motion'
 
 const nearbyDistance = 80
 const followDelay = 0.015 + 0.3 * 0.22

@@ -35,7 +35,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .projects {
-  background: var(--color-bg);
+  background: var(--color-background);
   border-top: 1px solid var(--color-border);
   .projects-grid {
     display: grid;

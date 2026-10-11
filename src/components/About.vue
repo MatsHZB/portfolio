@@ -49,7 +49,7 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .about {
-  background: var(--color-bg-muted);
+  background: var(--color-background-muted);
   border-top: 1px solid var(--color-border);
   .about-grid {
     display: grid;

@@ -9,7 +9,7 @@
           <div v-parallax="6" class="project-image-parallax">
             <img
               :src="project.imageUrl"
-              :srcset="project.imageSrcset"
+              :srcset="project.imageSourceSet"
               :alt="project.title"
               width="800"
               height="450"

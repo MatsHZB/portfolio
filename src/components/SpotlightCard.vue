@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { createSpotlight } from '@/lib/spotlight'
+import { createSpotlight } from '@/utilities/spotlight'
 
 export default defineComponent({
   name: 'SpotlightCard',

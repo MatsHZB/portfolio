@@ -1,6 +1,9 @@
 <template>
   <section id="home" class="hero">
     <DotGridBackground />
+    <div class="container hero-toolbar">
+      <ThemeToggle />
+    </div>
     <div class="container hero-content">
       <div class="hero-grid">
         <div class="hero-name">
@@ -48,6 +51,7 @@ import { defineComponent } from 'vue'
 import DotGridBackground from '@/components/DotGridBackground.vue'
 import LetterReveal from '@/components/LetterReveal.vue'
 import Magnet from '@/components/Magnet.vue'
+import ThemeToggle from '@/components/ThemeToggle.vue'
 
 export default defineComponent({
   name: 'Hero',
@@ -56,6 +60,7 @@ export default defineComponent({
     DotGridBackground,
     LetterReveal,
     Magnet,
+    ThemeToggle,
   },
   data() {
     return {
@@ -72,7 +77,7 @@ export default defineComponent({
   min-height: calc(60vh - 5rem);
   display: flex;
   align-items: center;
-  background: var(--color-bg);
+  background: var(--color-background);
   padding: clamp(2rem, 4vw, 3rem) 0;
   border-bottom: 1px solid var(--color-border);
   @media (max-width: 900px) {
@@ -87,6 +92,15 @@ export default defineComponent({
     @media (max-width: 768px) {
       font-size: clamp(2.6rem, 11vw, 3.5rem);
     }
+  }
+  .hero-toolbar {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
   }
   .hero-content {
     position: relative;

@@ -34,7 +34,7 @@
           <p class="contact-group-title">Sociale media</p>
           <div class="social-links">
             <Magnet v-for="link in socialLinks" :key="link.id" class="social-link-area">
-              <a :href="link.href" v-bind="newTabAttributes(link)" class="social-link">
+              <a :href="link.url" v-bind="newTabAttributes(link)" class="social-link">
                 <component :is="brandIcons[link.id]" :size="16" aria-hidden="true" />
                 <span>{{ link.name }}</span>
                 <ArrowUpRight class="social-link-arrow" :size="16" aria-hidden="true" />
@@ -118,7 +118,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   min-height: calc(100svh - 5rem);
-  background: var(--color-bg);
+  background: var(--color-background);
   border-top: 1px solid var(--color-border);
   @media (max-width: 768px) {
     min-height: calc(100svh - 4.5rem);
@@ -156,7 +156,7 @@ export default defineComponent({
   }
   .contact-details {
     border-top: 1px solid var(--color-border);
-    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    background: color-mix(in srgb, var(--color-background) 85%, transparent);
   }
   .contact-group {
     padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
@@ -254,7 +254,7 @@ export default defineComponent({
   .social-link:hover {
     background: var(--color-text);
     border-color: var(--color-text);
-    color: var(--color-bg);
+    color: var(--color-background);
   }
   .social-link-arrow {
     flex-shrink: 0;
@@ -264,7 +264,7 @@ export default defineComponent({
       transform 0.2s;
   }
   .social-link:hover .social-link-arrow {
-    color: var(--color-bg);
+    color: var(--color-background);
     transform: translate(2px, -2px);
   }
   .current-activities {

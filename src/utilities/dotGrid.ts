@@ -1,6 +1,6 @@
 import { gsap } from 'gsap'
 import { InertiaPlugin } from 'gsap/InertiaPlugin'
-import { prefersReducedMotion } from '@/lib/motion'
+import { prefersReducedMotion } from '@/utilities/motion'
 
 gsap.registerPlugin(InertiaPlugin)
 
@@ -24,26 +24,26 @@ interface Dot {
   isBeingPushed: boolean
 }
 
-interface RgbColor {
+interface ColorChannels {
   red: number
   green: number
   blue: number
 }
 
-function cssColor(variableName: string): string {
+function readCssVariable(variableName: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim()
 }
 
-function hexToRgb(hex: string): RgbColor {
-  const [red = 0, green = 0, blue = 0] = (hex.match(/[a-f\d]{2}/gi) ?? []).map((pair) =>
-    parseInt(pair, 16)
+function toColorChannels(hexadecimalColor: string): ColorChannels {
+  const [red = 0, green = 0, blue = 0] = (hexadecimalColor.match(/[a-f\d]{2}/gi) ?? []).map(
+    (pair) => parseInt(pair, 16)
   )
   return { red, green, blue }
 }
 
-function mixColors(from: RgbColor, to: RgbColor, amount: number): string {
-  const mix = (start: number, end: number) => Math.round(start + (end - start) * amount)
-  return `rgb(${mix(from.red, to.red)},${mix(from.green, to.green)},${mix(from.blue, to.blue)})`
+function mixColors(from: ColorChannels, to: ColorChannels, amount: number): string {
+  const mixChannel = (start: number, end: number) => Math.round(start + (end - start) * amount)
+  return `rgb(${mixChannel(from.red, to.red)},${mixChannel(from.green, to.green)},${mixChannel(from.blue, to.blue)})`
 }
 
 export function createDotGrid(canvas: HTMLCanvasElement, interactionArea: HTMLElement): () => void {
@@ -51,9 +51,9 @@ export function createDotGrid(canvas: HTMLCanvasElement, interactionArea: HTMLEl
   const container = canvas.parentElement
   if (!context || !container) return () => {}
 
-  const dotColor = cssColor('--color-dot')
-  const dotRgb = hexToRgb(dotColor)
-  const highlightRgb = hexToRgb(cssColor('--color-accent'))
+  let dotColor = readCssVariable('--color-dot')
+  let dotColorChannels = toColorChannels(dotColor)
+  let highlightColorChannels = toColorChannels(readCssVariable('--color-accent'))
   const dotShape = new Path2D()
   dotShape.arc(0, 0, dotSize / 2, 0, Math.PI * 2)
 
@@ -78,7 +78,8 @@ export function createDotGrid(canvas: HTMLCanvasElement, interactionArea: HTMLEl
 
       context.save()
       context.translate(dot.homeX + dot.offsetX, dot.homeY + dot.offsetY)
-      context.fillStyle = closeness > 0 ? mixColors(dotRgb, highlightRgb, closeness) : dotColor
+      context.fillStyle =
+        closeness > 0 ? mixColors(dotColorChannels, highlightColorChannels, closeness) : dotColor
       context.fill(dotShape)
       context.restore()
     }
@@ -195,12 +196,24 @@ export function createDotGrid(canvas: HTMLCanvasElement, interactionArea: HTMLEl
     }
   }
 
+  const refreshColors = () => {
+    dotColor = readCssVariable('--color-dot')
+    dotColorChannels = toColorChannels(dotColor)
+    highlightColorChannels = toColorChannels(readCssVariable('--color-accent'))
+    draw()
+  }
+
   const resizeObserver = new ResizeObserver(placeDots)
   resizeObserver.observe(container)
+  const themeObserver = new MutationObserver(refreshColors)
+  themeObserver.observe(document.documentElement, { attributeFilter: ['data-theme'] })
 
   if (prefersReducedMotion) {
     placeDots()
-    return () => resizeObserver.disconnect()
+    return () => {
+      resizeObserver.disconnect()
+      themeObserver.disconnect()
+    }
   }
 
   const visibilityObserver = new IntersectionObserver(([entry]) => {
@@ -219,6 +232,7 @@ export function createDotGrid(canvas: HTMLCanvasElement, interactionArea: HTMLEl
   return () => {
     stopDrawing()
     resizeObserver.disconnect()
+    themeObserver.disconnect()
     visibilityObserver.disconnect()
     document.removeEventListener('visibilitychange', onTabVisibilityChange)
     interactionArea.removeEventListener('pointermove', onPointerMove)

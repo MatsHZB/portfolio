@@ -12,7 +12,8 @@ export const projects: Project[] = [
     details:
       'Dots Development bouwt FiveM-scripts. Wat begon als eigen hulpmiddelen voor onze servers, wordt nu openbaar gedeeld: gratis op GitHub en betaald via een eigen webwinkel. De nadruk ligt op prestaties, stabiliteit en functies die servereigenaren echt gebruiken. Elke versie is getest en gedocumenteerd.',
     imageUrl: '/images/dots-development-logo.webp',
-    imageSrcset: '/images/dots-development-logo.webp 1x, /images/dots-development-logo@2x.webp 2x',
+    imageSourceSet:
+      '/images/dots-development-logo.webp 1x, /images/dots-development-logo@2x.webp 2x',
     imageFit: 'contain',
     githubUrl: 'https://github.com/DotsDevelopment',
     demoUrl: null,

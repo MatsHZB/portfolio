@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
-import { gsap, prefersReducedMotion, SplitText } from '@/lib/motion'
+import { gsap, prefersReducedMotion, SplitText } from '@/utilities/motion'
 
 export default defineComponent({
   name: 'LetterReveal',
